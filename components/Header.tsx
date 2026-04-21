@@ -3,13 +3,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Logo from "@/public/images/logo.png"
+import Image from "next/image";
 
 const links = [
   { href: "/", label: "Home" },
   { href: "/explore", label: "Explore" },
   { href: "/map", label: "Map View" },
+  {href: "/explore", label: "AI Trip Planner"},
   { href: "/about", label: "About" },
+
   { href: "/sponsors", label: "Our Sponsors" },
+  
 ] as const;
 
 export default function Header() {
@@ -22,13 +27,8 @@ export default function Header() {
 
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-3 font-extrabold tracking-tight">
-          <span className="h-11 w-11 rounded-2xl bg-[linear-gradient(135deg,rgba(0,186,227,1),rgba(197,0,24,1))] shadow-glow" />
-          <span>
-            DalilakJo
-            <span className="block text-xs font-semibold tracking-normal text-slate-500">
-              Jordan...More than You Expect
-            </span>
-          </span>
+          <Image src={Logo.src} alt="Logo" width={150} height={150} />
+          
         </Link>
 
         {/* DESKTOP NAV */}

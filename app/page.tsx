@@ -3,6 +3,7 @@ import Link from "next/link";
 import { eliteSponsors, locations, superSponsors } from "@/data/locations";
 import LocationCard from "@/components/LocationCard";
 import SponsorStrip from "@/components/SponsorStrip";
+import Logo from "@/public/images/logoHeader.png"
 
 export default function HomePage() {
   const featured = locations.slice(0, 3);
@@ -14,72 +15,79 @@ export default function HomePage() {
       <SponsorStrip sponsors={eliteSponsors} />
 
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_10%_15%,rgba(0,186,227,.18),transparent_18%),radial-gradient(circle_at_90%_10%,rgba(197,0,24,.12),transparent_20%),linear-gradient(180deg,#08131a_0%,#0b1f29_100%)]" />
-        <div className="container-wrap py-6 md:py-10">
-          <div className="card overflow-hidden border-white/10 bg-slate-950 text-white shadow-[0_18px_60px_rgba(2,8,23,0.35)]">
-            <div className="grid gap-6 p-5 md:grid-cols-[1.1fr_.9fr] md:p-8">
-              <div>
-                <span className="badge border-white/10 bg-white/10 text-white/70">
-                  Official tourism showcase 
-                </span>
-                <h1 className="mt-4 text-5xl font-black leading-[0.92] tracking-tight md:text-7xl">
-                  DalilakJo
-                </h1>
-                <p className="mt-5 max-w-2xl text-base leading-8 text-white/80 md:text-lg">
-                  Jordan...More than You Expect. A vibrant tourism platform that combines premium visuals,
-                  short-form reels, and curated destination content to create a national experience that feels alive.
-                </p>
+  {/* MIDDLE GROUND BACKGROUND: Rich Crimson derivation */}
+  {/* This #8B0000 is deep enough to feel premium, but vibrant enough to feel "Red" */}
+  <div className="absolute inset-0 -z-10 bg-[#9a2525]" />
+  
+  {/* Subtle gradient overlay to add dimension without turning it into Maroon */}
+  <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.1)_0%,transparent_100%)]" />
+  <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_30%,rgba(197,0,24,0.4),transparent_50%)]" />
 
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Link href="/explore" className="cta cta-primary">
-                    Explore Locations
-                  </Link>
-                  <Link href="/sponsors" className="cta cta-soft">
-                    Sponsor Opportunities
-                  </Link>
-                  <Link href="/map" className="cta cta-soft">
-                    Open Map
-                  </Link>
-                </div>
+  <div className="container-wrap py-6 md:py-10">
+    <div className="card overflow-hidden border-white/10 bg-white text-black shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)]">
+      <div className="grid gap-6 p-5 md:grid-cols-[1.1fr_.9fr] md:p-12">
+        <div className="flex flex-col justify-center">
+          <span className="badge border-[#c50018]/20 bg-[#c50018]/5 text-[#c50018] font-bold">
+            Official tourism showcase 
+          </span>
+          
+          <h1 className="mt-4 text-5xl font-black leading-[0.92] tracking-tighter md:text-8xl text-black">
+            <Image src={Logo.src} height={280} width={420} alt="Logo"/>
+          </h1>
+          
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 md:text-lg">
+            Jordan...More than You Expect. A vibrant tourism platform that combines premium visuals,
+            short-form reels, and curated destination content to create a national experience that feels alive.
+          </p>
 
-                <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-[22px] border border-white/10 bg-white/6 p-4">
-                    <p className="text-2xl font-black">6</p>
-                    <p className="mt-1 text-sm text-white/65">curated destinations</p>
-                  </div>
-                  <div className="rounded-[22px] border border-white/10 bg-white/6 p-4">
-                    <p className="text-2xl font-black">3</p>
-                    <p className="mt-1 text-sm text-white/65">sponsor tiers</p>
-                  </div>
-                  <div className="rounded-[22px] border border-white/10 bg-white/6 p-4">
-                    <p className="text-2xl font-black">1</p>
-                    <p className="mt-1 text-sm text-white/65">national identity</p>
-                  </div>
-                </div>
-              </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/explore" className="px-8 py-3 bg-[#c50018] text-white rounded-full font-bold text-sm hover:scale-105 transition-all shadow-lg shadow-[#c50018]/20">
+              Explore Locations
+            </Link>
+            <Link href="/map" className="px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white rounded-full font-bold text-sm transition-all">
+              Open Map
+            </Link>
+          </div>
 
-              <div className="grid gap-3">
-                <div className="grid grid-cols-2 gap-3">
-                  {heroImages.slice(0, 2).map((item) => (
-                    <div key={item.slug} className="relative overflow-hidden rounded-[24px] border border-white/10 aspect-[4/5]">
-                      <Image src={item.coverImage} alt={item.name} fill className="object-cover" priority />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/0 to-transparent" />
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  {heroImages.slice(2, 4).map((item) => (
-                    <div key={item.slug} className="relative overflow-hidden rounded-[24px] border border-white/10 aspect-[4/5]">
-                      <Image src={item.coverImage} alt={item.name} fill className="object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/0 to-transparent" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <div className="mt-10 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-[22px] border border-[#c50018]/10 bg-[#c50018]/5 p-5">
+              <p className="text-3xl font-black text-black">6</p>
+              <p className="mt-1 text-[10px] uppercase font-black text-[#c50018] tracking-widest">Destinations</p>
+            </div>
+            {/* Softened stats to keep focus on the Red */}
+            <div className="rounded-[22px] border border-slate-100 bg-slate-50 p-5">
+              <p className="text-3xl font-black text-black">3</p>
+              <p className="mt-1 text-[10px] uppercase font-black text-slate-400 tracking-widest">Sponsor Tiers</p>
+            </div>
+            <div className="rounded-[22px] border border-slate-100 bg-slate-50 p-5">
+              <p className="text-3xl font-black text-black">1</p>
+              <p className="mt-1 text-[10px] uppercase font-black text-slate-400 tracking-widest">Identity</p>
             </div>
           </div>
         </div>
-      </section>
+
+        <div className="grid gap-3 p-2 bg-slate-50/50 rounded-[32px] border border-slate-100">
+          <div className="grid grid-cols-2 gap-3">
+            {heroImages.slice(0, 2).map((item) => (
+              <div key={item.slug} className="relative overflow-hidden rounded-[28px] border-[4px] border-white aspect-[4/5] shadow-md">
+                <Image src={item.coverImage} alt={item.name} fill className="object-cover" priority />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            {heroImages.slice(2, 4).map((item) => (
+              <div key={item.slug} className="relative overflow-hidden rounded-[28px] border-[4px] border-white aspect-[4/5] shadow-md">
+                <Image src={item.coverImage} alt={item.name} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="container-wrap py-8">
         <div className="grid gap-4 md:grid-cols-3">
